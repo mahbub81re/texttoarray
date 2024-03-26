@@ -1,22 +1,17 @@
 "use client"
 import { useState } from "react"
 
-export default function(){
+export default function Home(){
   const [text,setText]=useState("");
   const [number,setNumber]=useState(true);
   const [result,setResult]=useState([]);
-  //let d= db;
 
   const generate = (e:any) =>{
     e.preventDefault();
     let farray  =text.toLocaleLowerCase().split(" ") as [];
-    //.trim().toLocaleLowerCase().replace(",", "").replace("',","").replace(".", "")
     let prossece =[] as [];
     farray.map((t)=>{
-     // let index = text.indexOf(t);
       if(prossece.indexOf(t)==-1){ 
-       // d.indexOf(t)
-        //  console.log(d)
         prossece.push(t)
      }
       
