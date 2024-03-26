@@ -1,10 +1,19 @@
 "use client"
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 export default function Home(){
   const [text,setText]=useState("");
   const [number,setNumber]=useState(true);
   const [result,setResult]=useState([]);
+  
+const [copySuccess, setCopySuccess] = useState('');
+
+function copyToClipboard() {
+    let val = result.toString();
+
+   navigator.clipboard.writeText(val.replaceAll(","," "))
+    setCopySuccess('Copied!');
+  };
 
   const generate = (e:any) =>{
     e.preventDefault();
@@ -30,11 +39,13 @@ export default function Home(){
         <button  >Show</button>
        </form>
      </div>
-     <div className="mx-auto mt-6 w-[300px] h-auto bg-red-300">
-      <button onClick={()=>setNumber(!number)}>Number {number&& "X"}</button>
+     <div className="mx-auto mt-6 w-[300px] h-auto bg-red-300" >
+      <button onClick={()=>setNumber(!number)}>Number {number&& "X"}</button><button onClick={copyToClipboard}>Copy</button> {copySuccess}
+      
        {result.map((res,index)=>{
         return(<div key={index}>{number && index} {res+" "}</div>)
        })}
+      
      </div>
    </div>
   )
