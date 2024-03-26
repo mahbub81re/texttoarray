@@ -33,7 +33,7 @@ export default function Home(){
      <div className="mx-auto mt-6 w-[300px] h-auto bg-red-300">
       <button onClick={()=>setNumber(!number)}>Number {number&& "X"}</button>
        {result.map((res,index)=>{
-        return(<div key={index}>{number && index} {res}</div>)
+        return(<div key={index}>{number && index} {res+" "}</div>)
        })}
      </div>
    </div>
